@@ -1,63 +1,71 @@
-# ReconX
-Enumeration wins the battle before exploitation begins 🔎⚔️
-Built a controlled lab environment using Kali Linux (attacker) and Ubuntu (target) configured on a NAT-only virtual network.
-This setup ensured isolated host-only communication for safe security testing and traffic analysis.
-# Python-Based Directory Enumeration Tool (NGINX Lab)
+# 🔎 ReconX: Web Enumeration, Authentication Weakness & SSH Attack Detection Lab
 
-# Project Description
-Built a Python-based directory enumeration tool and tested it against an NGINX web server in a controlled lab environment. Created custom directories to simulate exposed endpoints and validated results through HTTP response analysis.
-
-# Tool Features
-Directory enumeration using wordlists
-Detects HTTP 200 (OK) responses
-Detects HTTP 403 (Forbidden) responses
-# OUTPUT
-
-# PROJECT 2: Authentication Weakness Detection Using Nmap NSE
-
-# Project Description
-Detect weak or misconfigured authentication (FTP, SSH)
-Identified weak or misconfigured authentication in FTP and SSH using Nmap NSE scripts
-Detected anonymous FTP access and multiple SSH authentication methods
-Highlighted risk of unauthorized access and brute-force attacks, validated via NSE scan results
-
-# 🔐 SSH Brute-Force Detection (Safe Lab)
-
-# Project Overview
-This project demonstrates the detection of weak or misconfigured SSH authentication in a controlled lab environment using Nmap NSE scripts and system logs 🖥️. The assessment identifies risks such as password-based authentication and keyboard-interactive methods, which can allow brute-force attacks ⚠️.
+# 🧩 Project Overview
+This project demonstrates a comprehensive reconnaissance and authentication security assessment conducted in a controlled lab environment 🧪. The assessment covers web directory enumeration, authentication weakness detection in FTP and SSH, and SSH brute‑force activity detection 🔐. Using Nmap NSE scripts, custom tools, and system logs, the project highlights how insecure configurations can be identified before exploitation begins ⚠️. All testing was performed in an isolated NAT‑based virtual network to ensure safe and ethical security analysis 🛡️.
 
 # 🛠️ Tools Used
-Kali Linux (Attacker) 🐧
-Ubuntu Server (Target) 🖥️
-Nmap NSE scripts (ssh-auth-methods) 🔍
-System logs (/var/log/auth.log) 📄
 
-📋 Steps
+🐧 Kali Linux (Attacker)
 
-# 1.Scan SSH service using Nmap NSE:
+🖥️ Ubuntu Server (Target)
 
-nmap -p 22 --script ssh-auth-methods <target-ip>
+🔍 Nmap with NSE scripts
 
-# 2.Observe authentication methods detected (publickey, password, keyboard-interactive) 🔑
+🐍 Python (Directory Enumeration Tool)
 
-# 3.Simulate brute-force attempts (safe lab only) using Hydra with a small password list:
+🌐 NGINX Web Server
 
-hydra -l testuser -P password-list.txt ssh://<target-ip> -t 4
-Monitor /var/log/auth.log on the target to detect failed login attempts 📈
+📄 System Logs (/var/log/auth.log)
+
+⚔️ Hydra (Safe lab usage)
+
+# ⚙️ Steps Performed
+
+🔎 Web Directory Enumeration (NGINX Lab)
+
+# python3 dir_enum.py
+
+Validated exposed endpoints using HTTP response codes (200 / 403).
+
+🔐 Authentication Weakness Detection (FTP & SSH)
+
+# nmap -p 21 --script ftp-anon <target-ip>
+
+# nmap -p 22 --script ssh-auth-methods <target-ip>
+
+Detected anonymous FTP access and multiple SSH authentication methods.
+
+⚔️ SSH Brute‑Force Activity Detection (Safe Lab)
+
+# hydra -l testuser -P password-list.txt ssh://<target-ip> -t 4
+
+Observed repeated failed login attempts via authentication logs.
 
 # 📌 Findings
 
-Password and keyboard-interactive authentication detected on SSH service 🔓
-Multiple failed login attempts observed in system logs, indicating brute-force risk ⚠️
+🚨 Anonymous authentication detected in FTP service
+
+🔓 Multiple SSH authentication methods enabled (password, keyboard‑interactive)
+
+📈 Repeated failed SSH login attempts observed in system logs
+
+⚠️ Increased risk of unauthorized access and brute‑force attacks
 
 # 📸 Screenshots
 
-screenshots/ssh-nse-output.png → NSE detection output
-screenshots/auth-log-detection.png → Auth log detection
+🖼️ Nmap NSE scan outputs (FTP & SSH detection)
+
+🖼️ Python directory enumeration results
+
+🖼️ SSH authentication log entries showing failed attempts
 
 # 🛡️ Mitigation Recommendations
-Enforce key-based SSH authentication 🔑
-Disable password and keyboard-interactive authentication ❌
-Implement rate-limiting or Fail2Ban to block brute-force attempts ⛔
 
+🔑 Disable anonymous FTP access
+
+🔐 Enforce key‑based SSH authentication
+
+🚫 Disable password and keyboard‑interactive SSH methods
+
+⛔ Implement rate‑limiting and Fail2Ban for SSH protection
 
