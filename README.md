@@ -25,21 +25,39 @@ This project demonstrates a comprehensive reconnaissance and authentication secu
 
 # python3 dir_enum.py
 
+![dir](https://github.com/user-attachments/assets/a6eb14e7-6ca0-416f-8bf6-f0171eb2d71b)
+
+
 Validated exposed endpoints using HTTP response codes (200 / 403).
 
 🔐 Authentication Weakness Detection (FTP & SSH)
 
 # nmap -p 21 --script ftp-anon <target-ip>
 
+![ftp](https://github.com/user-attachments/assets/daedac26-e8a4-419a-8e19-59dcd59703c6)
+
+![ftp2](https://github.com/user-attachments/assets/6a073484-d984-4132-85fe-186f3ee2a11d)
+
+
+
 # nmap -p 22 --script ssh-auth-methods <target-ip>
 
-Detected anonymous FTP access and multiple SSH authentication methods.
+![ssh2](https://github.com/user-attachments/assets/8a591e79-6ca6-48e0-8a5b-6345d296e867)
+
+Detected multiple SSH authentication methods.
 
 ⚔️ SSH Brute‑Force Activity Detection (Safe Lab)
 
 # hydra -l testuser -P password-list.txt ssh://<target-ip> -t 4
 
+![kk](https://github.com/user-attachments/assets/783f31cb-e203-48f5-bbe3-e1b21eec9dab)
+
+![kk1](https://github.com/user-attachments/assets/c6ffcac0-c3fd-4951-86e6-e2690190707d)
+
 Observed repeated failed login attempts via authentication logs.
+
+![kk2](https://github.com/user-attachments/assets/d58bf398-8b46-4bf2-9be4-fbd5f211f34b)
+
 
 # 📌 Findings
 
@@ -50,14 +68,6 @@ Observed repeated failed login attempts via authentication logs.
 📈 Repeated failed SSH login attempts observed in system logs
 
 ⚠️ Increased risk of unauthorized access and brute‑force attacks
-
-# 📸 Screenshots
-
-🖼️ Nmap NSE scan outputs (FTP & SSH detection)
-
-🖼️ Python directory enumeration results
-
-🖼️ SSH authentication log entries showing failed attempts
 
 # 🛡️ Mitigation Recommendations
 
